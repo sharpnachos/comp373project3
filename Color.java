@@ -1,4 +1,4 @@
 
-public class Color {
-
+public interface Color {
+    String fill();
 }
