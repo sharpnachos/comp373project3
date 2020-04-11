@@ -5,30 +5,39 @@ import java.util.*;
 public class CarBrands implements Subject{
 
     private LinkedList<Observer> observe = new LinkedList<Observer>();
+    private HashMap<String, Integer> carBrands = new HashMap<String, Integer>();
 
-    private Integer inventory;
+    private LinkedList<Integer> inventory = new LinkedList<Integer>();
     private String name;
+    private Integer sample;
 
     public String getBrandName(){
         return name;
     }
 
-    public Integer getInventory(){
-        return inventory;
+    public Integer getInventory() {
+        return sample;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public void setInventory(Integer inventory) {
-        this.inventory = inventory;
-        takeInventory();
+    public void setInventory(Integer sample) {
+        this.sample = sample;
+        inventory.add(sample);
+        carBrands.put(name,sample);
     }
 
-    public CarBrands(String name, Integer inventory){
+    public CarBrands(String name, Integer sample){
         this.name = name;
-        this.inventory = inventory;
+        this.sample = sample;
+        carBrands.put(name,sample);
+        System.out.println("The car manufacturer "+name+" has placed "+sample+" vheicles in our stock");
+    }
+
+    public void listVheicles(){
+        System.out.println(carBrands);
     }
 
     @Override
@@ -38,8 +47,16 @@ public class CarBrands implements Subject{
 
     @Override
     public void takeInventory() {
+        
         for (Observer brands : observe){
-            brands.update(this.inventory);
+            /*for(int i=0;i<=inventory.size();i++){
+                this.sample = inventory.get(i);
+                brands.update(sample);
+            }*/
+            brands.update(carBrands);
+            System.out.println("\n");
+            
+        
         }
 
     }
