@@ -1,3 +1,4 @@
+package bridgepattern;
 
 public class Green implements Color{
     @Override
