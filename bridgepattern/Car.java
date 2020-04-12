@@ -1,10 +1,10 @@
 package bridgepattern;
 
 public abstract class Car {
-    protected Color color;
+    protected ManufactureAPI manufactureAPI;
 
-    public Car(Color color2) {
-	}
-
-	abstract public String build();
+    protected Car(ManufactureAPI manufactureAPI){
+        this.manufactureAPI = manufactureAPI;
+    }
+    public abstract void build();	
 }

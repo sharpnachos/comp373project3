@@ -1,13 +1,16 @@
 package bridgepattern;
 
-public class Sedan extends Car {
-    
-    public Sedan(Color color) {
-        super(color);
-    }
+public class Sedan extends Car{
+   private int mpg, topSpeed, cost;
 
-    @Override
-    public String build(){
-        return "Sedan manufactured. " + color.fill();
-    }
+   public Sedan(int mpg, int topSpeed, int cost, ManufactureAPI manufactureAPI) {
+      super(manufactureAPI);
+      this.mpg = mpg;  
+      this.topSpeed = topSpeed;  
+      this.cost = cost;
+   }
+
+   public void build() {
+      manufactureAPI.buildCar(cost,mpg,topSpeed);
+   }
 }
